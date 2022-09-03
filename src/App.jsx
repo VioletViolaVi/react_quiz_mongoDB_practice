@@ -4,6 +4,7 @@ import Auth from "./components/Auth";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import NotFound from "./components/NotFound";
+import Profile from "./components/Profile";
 import Register from "./components/Register";
 
 function App() {
@@ -16,6 +17,8 @@ function App() {
         <Route path="register" element={<Register />}></Route>
         <Route path="login" element={<Login />}></Route>
         <Route path="auth" element={<Auth />}></Route>
+
+        <Route path="profile/*/*" element={<Profile />}></Route>
       </Routes>
     </>
   );
