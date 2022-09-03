@@ -9,6 +9,8 @@ function NavBar() {
 
       <NavLink to={"register"}>Register</NavLink>
 
+      <NavLink to={"auth"}>Auth</NavLink>
+
       <Outlet />
     </>
   );
