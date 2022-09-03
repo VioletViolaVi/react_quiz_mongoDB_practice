@@ -12,6 +12,12 @@ const reducer = (state = initState, action) => {
         user: action.user
       };
 
+    case "set_user":
+      return {
+        ...state,
+        user: action.user
+      };
+
     // EVERY REDUCER NEEDS A DEFAULT!!!
     default:
       return state;
