@@ -11,6 +11,8 @@ function NavBar() {
 
       <NavLink to={"auth"}>Auth</NavLink>
 
+      <NavLink to={"profile"}>Profile</NavLink>
+
       <Outlet />
     </>
   );
