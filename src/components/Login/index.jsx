@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import Register from "../Register";
 
 function Login() {
   // state variables
@@ -67,8 +69,18 @@ function Login() {
         <br />
         <button>Login</button>
       </form>
+      <p>
+        Don't have an account? <Link to={"/register"}>Register</Link>
+      </p>
     </>
   );
 }
 
 export default Login;
+
+/*
+{
+    "email":"test@test.com",
+    "password":"test"
+}
+*/

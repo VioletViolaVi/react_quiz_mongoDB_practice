@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Register() {
   // state variables
@@ -93,6 +94,9 @@ function Register() {
         <br />
         <button>Register</button>
       </form>
+      <p>
+        Have an account? <Link to={"/login"}>Login</Link>
+      </p>
     </>
   );
 }
