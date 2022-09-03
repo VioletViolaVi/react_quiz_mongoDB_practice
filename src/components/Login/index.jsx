@@ -1,86 +1,67 @@
-import { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import Register from "../Register";
 
-function Login() {
-  // state variables
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+class Login extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "",
+      password: ""
+    };
+  }
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        email,
-        password
-      })
+  render() {
+    // what user puts in email input
+    const handleEmail = (e) => {
+      return this.setState({ email: e.target.value });
     };
 
-    const response = await fetch("http://localhost:3000/login", options);
-    const data = await response.json();
+    // what user puts in password input
+    const handlePassword = (e) => {
+      return this.setState({ password: e.target.value });
+    };
 
-    // based on if you can get the jwt value for user in obj
-    if (data.user) {
-      alert("Login successful");
-      window.location.href = "/";
-    } else {
-      alert("Login failed");
-    }
-  };
+    // sends input info to backend
+    const handleBtnSend = () => {
+      return this.props.logIn(this.state.email, this.state.password);
+    };
 
-  // functions for setter functions
-  const handleEmail = (e) => {
-    setEmail((prevEmail) => {
-      prevEmail = e.target.value;
-      return prevEmail;
-    });
-  };
+    // stops page refreshing
+    const handleSubmitForm = (e) => {
+      e.preventDefault();
+    };
 
-  const handlePassword = (e) => {
-    setPassword((prevPassword) => {
-      prevPassword = e.target.value;
-      return prevPassword;
-    });
-  };
+    // // changes condition to 'false' in Auth class
+    // const handleLinkSwap = () => {
+    //   return this.setState({ tab: "register" });
+    // };
 
-  return (
-    <>
-      <h1>Login</h1>
-      <form onSubmit={handleLogin}>
-        <input
-          required
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={handleEmail}
-        />
-        <input
-          required
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={handlePassword}
-        />
-        <br />
-        <button>Login</button>
-      </form>
-      <p>
-        Don't have an account? <Link to={"/register"}>Register</Link>
-      </p>
-    </>
-  );
+    return (
+      <>
+        <h1>Login</h1>
+        <form onSubmit={handleSubmitForm}>
+          <input
+            required
+            type="email"
+            placeholder="Email"
+            value={this.state.email}
+            onChange={handleEmail}
+          />
+          <input
+            required
+            type="password"
+            placeholder="Password"
+            value={this.state.password}
+            onChange={handlePassword}
+          />
+          <br />
+          <button onClick={handleBtnSend}>Login</button>
+        </form>
+        {/* <p onClick={handleLinkSwap}>
+          Don't have an account? <Link to={"/register"}>Register</Link>
+        </p> */}
+      </>
+    );
+  }
 }
-
 export default Login;
-
-/*
-{
-    "email":"test@test.com",
-    "password":"test"
-}
-*/
