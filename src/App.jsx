@@ -6,6 +6,9 @@ import Login from "./components/Login";
 import NotFound from "./components/NotFound";
 import Profile from "./components/Profile";
 import Register from "./components/Register";
+import componentDidMount from "./dispatchStuff/index";
+
+componentDidMount.componentDidMount();
 
 function App() {
   return (
